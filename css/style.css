@@ -1,0 +1,150 @@
+*{
+    /*Reset básico do css*/
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.game-board{
+    width: 100%; /*largura do game*/
+    height: 500px;
+    border-bottom: 20px solid rgb(35, 160, 35); /*criando caixa*/
+    margin: 0 auto; /*Centralizando*/
+    position: relative; /*position relative usamos para as imagens respeitar o limite do quadro*/
+    overflow: hidden; /*Tudo que sair do limite da tela sumir*/
+    background: linear-gradient(#87ceeb, #e0f6ff);
+}
+
+.clouds{
+    position: absolute;
+    width: 400px;
+    margin-top: -10px ;
+    animation: clouds 20s linear infinite;
+    overflow: hidden;
+}
+
+.clouds2{
+    position: absolute;
+    width: 480px;
+    margin-top: 170px ;
+    animation: clouds 15s linear infinite;
+    animation-direction: alternate-reverse;
+    overflow: hidden;
+}
+
+.pipe {
+    right: -120px;
+    position: absolute;/*position absolute para nenhuma imagem interferir na outra*/
+    bottom: -11px; /*Tubo em baixo*/
+    width: 80px;
+    /* right: 0; Mexendo no pipe para comecar da direita para esquerda inifitamente */
+    animation: pipe-animation 4s linear infinite;
+    animation-delay: 2s;
+}
+
+.pipe2 {
+    right: -120px;
+    position: absolute;/*position absolute para nenhuma imagem interferir na outra*/
+    bottom: -11px; /*Tubo em baixo*/
+    width: 80px;
+    /* right: 0; Mexendo no pipe para comecar da direita para esquerda inifitamente */
+    animation: pipe-animation 4s linear infinite;
+    animation-delay: 0;
+
+}
+
+.mario {
+    position: absolute;/*não interferir no comportamento de outra imagem se lembre*/
+    width: 100px;
+    bottom: -3px;
+    left: 30px;
+}
+/* A Lógica que usamos para o mario pular é, quando clicar em qualquer tecla do teclado, a classe jump entra na classe da imagem do mario*/
+
+.jump {
+    animation: jump 500ms ease-out;
+
+}
+
+.mario-game-over{
+    position: absolute;
+    width: 100px;
+}
+/*Grandient in text*/
+
+.score {
+
+    /*Position*/
+    display: flex;
+    position: absolute;
+    align-items: left;
+    margin-top: 100px;
+
+    /*Gradient*/
+    font-size: 40px;
+    font-weight: bold;
+    text-transform: uppercase;
+    
+    /* background-color: linear-gradient(#fb1501, #fb6d01,#e5fb01,#157909) */
+    background-image: linear-gradient(#fb1501, #fb6d01,#e5fb01,#157909);
+
+    /*colocando gradient no texto*/
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+@keyframes pipe-animation{
+    from {
+        right: -120px;
+    }
+    
+    to {
+        right: 100%;
+    }
+}
+
+
+@keyframes jump {
+    /*quando tiver 0% da animação ele vai estar no chão*/
+    0% {
+        bottom: 0;
+    }
+
+    /*durante 40 50 60 % ele permanece no ar e depois vai diminuindo gradativamente*/
+    40% {
+        bottom: 220px;
+    }
+
+    50% {
+        bottom: 180px;
+    }
+
+    60% {
+        bottom: 180px;
+    }
+
+    100% {
+        bottom: 0;
+    }
+    
+}
+
+@keyframes clouds {
+    from {
+        right: -400px;
+    }
+    to {
+        right: 100%;
+    }
+    
+}
+
+@keyframes clouds2{
+    from {
+        left: -480px;
+    }
+    to{
+        right: 100%;
+    }
+}
